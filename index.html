@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>My News</title>
 </head>
-
 <body>
     <nav>
         <div class="main-nav flex container">
@@ -23,14 +21,18 @@
             </div>
             <div class="nav-search flex">
                 <input type="text" placeholder="e.g. coding" id="search-input">
-                <button class="search-button" id="search-button">Search</button>
+                <button class="search-button"  id="search-button">Search</button>
             </div>
         </div>
+      
     </nav>
-
+  
     <main>
+        <div class="nav-second container" id="results">
+           
+        </div>
         <div class="card-container container flex " id="card-container">
-
+          
         </div>
     </main>
     <template id="template-news-card" id="template-news-card">
@@ -47,7 +49,6 @@
             </div>
         </div>
     </template>
-    <script src="main.js"></script>
+    <script src="script.js"></script>
 </body>
-
 </html>
