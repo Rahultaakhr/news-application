@@ -15,8 +15,9 @@ async function fetchNews(query) {
     const data = await resp.json()
     console.log(data);
     console.log(data.totalResults)
-    bindData(data.articles);
+    bindData(Array.from(data.articles));
     results(data.totalResults)
+    console.log(Array.from(data.articles));
    
 }
 function results(totalResults){
