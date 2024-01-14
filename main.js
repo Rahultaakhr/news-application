@@ -3,7 +3,7 @@ const ApiKey = "8c54fdb693cd4e28acfe309ac929ba83"
 const url = "https://newsapi.org/v2/everything?q="
 const searchBtn= document.getElementById('search-button')
 const searchInput=document.getElementById('search-input')
-
+const NoResults =document.getElementById('results')
 
 // searchBtn.addEventListener('click',fetchNews(`${searchInput.value}`))
 
@@ -14,7 +14,13 @@ async function fetchNews(query) {
     const resp = await fetch(`${url}${query}&apiKey=${ApiKey}`)
     const data = await resp.json()
     console.log(data);
+    console.log(data.totalResults)
     bindData(data.articles);
+    results(data.totalResults)
+   
+}
+function results(totalResults){
+    NoResults.innerHTML=`Results-${totalResults}`
 }
 function bindData(articles) {
     const cardContainer = document.getElementById('card-container')
@@ -28,6 +34,7 @@ function bindData(articles) {
         cardContainer.appendChild(cardClone);
     });
 }
+
 function fillDataCard(cardClone, article) {
     const cardImg = cardClone.querySelector('#news-img')
     const newsTitle = cardClone.querySelector('#news-title')
