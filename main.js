@@ -27,7 +27,7 @@ function bindData(articles) {
     const newsCardTemplate = document.getElementById('template-news-card')
 
     cardContainer.innerHTML = '';
-    articles.forEach((article) => {
+    Array.from(articles).forEach((article) => {
         if (!article.urlToImage) return;
         const cardClone = newsCardTemplate.content.cloneNode(true);
         fillDataCard(cardClone, article);
