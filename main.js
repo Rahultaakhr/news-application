@@ -1,4 +1,4 @@
-console.log('Rahul');
+
 const ApiKey = "8c54fdb693cd4e28acfe309ac929ba83"
 const url = "https://newsapi.org/v2/everything?q="
 const searchBtn= document.getElementById('search-button')
@@ -15,7 +15,7 @@ async function fetchNews(query) {
     const data = await resp.json()
     console.log(data);
     console.log(data.totalResults)
-    bindData(Array.from(data.articles));
+    bindData(data.articles);
     results(data.totalResults)
     console.log(Array.from(data.articles));
    
