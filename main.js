@@ -3,7 +3,7 @@ const ApiKey = "8c54fdb693cd4e28acfe309ac929ba83"
 const url = "https://newsapi.org/v2/everything?q="
 const searchBtn= document.getElementById('search-button')
 const searchInput=document.getElementById('search-input')
-const NoResults =document.getElementById('results')
+
 
 // searchBtn.addEventListener('click',fetchNews(`${searchInput.value}`))
 
@@ -14,26 +14,25 @@ async function fetchNews(query) {
     const resp = await fetch(`${url}${query}&apiKey=${ApiKey}`)
     const data = await resp.json()
     console.log(data);
-    console.log(data.totalResults)
     bindData(data.articles);
-    results(data.totalResults)
-    console.log(Array.from(data.articles));
-   
-}
-function results(totalResults){
-    NoResults.innerHTML=`Results-${totalResults}`
 }
 function bindData(articles) {
-    const cardContainer = document.getElementById('card-container')
-    const newsCardTemplate = document.getElementById('template-news-card')
+    const cardContainer = document.getElementById('card-container');
+    const newsCardTemplate = document.getElementById('template-news-card');
 
     cardContainer.innerHTML = '';
-    Array.from(articles).forEach((article) => {
-        if (!article.urlToImage) return;
-        const cardClone = newsCardTemplate.content.cloneNode(true);
-        fillDataCard(cardClone, article);
-        cardContainer.appendChild(cardClone);
-    });
+
+    // Check if articles is defined and is an array
+    if (Array.isArray(articles)) {
+        articles.forEach((article) => {
+            if (!article.urlToImage) return;
+            const cardClone = newsCardTemplate.content.cloneNode(true);
+            fillDataCard(cardClone, article);
+            cardContainer.appendChild(cardClone);
+        });
+    } else {
+        console.error('Invalid or undefined articles data.');
+    }
 }
 
 function fillDataCard(cardClone, article) {
